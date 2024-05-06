@@ -1,20 +1,17 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAA-mCpPa1C8yCe3QPcDkAUERXFt5prRi0",
   authDomain: "fir-cd40a.firebaseapp.com",
-  databaseURL: "https://fir-cd40a-default-rtdb.firebaseio.com/",
   projectId: "fir-cd40a",
   storageBucket: "fir-cd40a.appspot.com",
   messagingSenderId: "754020825701",
   appId: "1:754020825701:web:7391f23c36fc2c5b66e48c",
-  measurementId: "G-KZRF350XY9"
+  measurementId: "G-KZRF350XY9",
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const analytics = getAnalytics(app);
+const db = getFirestore(app);
 
-export { app, auth, analytics };
+export { app, db };
