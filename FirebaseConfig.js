@@ -1,10 +1,11 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAA-mCpPa1C8yCe3QPcDkAUERXFt5prRi0",
   authDomain: "fir-cd40a.firebaseapp.com",
+  databaseURL: "https://fir-cd40a-default-rtdb.firebaseio.com/",
   projectId: "fir-cd40a",
   storageBucket: "fir-cd40a.appspot.com",
   messagingSenderId: "754020825701",
@@ -12,9 +13,8 @@ const firebaseConfig = {
   measurementId: "G-KZRF350XY9"
 };
 
-
 const app = initializeApp(firebaseConfig);
-
+const auth = getAuth(app);
 const analytics = getAnalytics(app);
 
-export default app;
+export { app, auth, analytics };

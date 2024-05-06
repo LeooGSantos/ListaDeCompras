@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, Button, StyleSheet, Alert } from 'react-native';
-import { db } from '../FirebaseConfig';
+import { db } from '../../FirebaseConfig';
 
 const ListaDeCompras = () => {
   const [itens, setItens] = useState([]);

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Alert } from 'react-native';
-import { db } from '../FirebaseConfig';
+import { db } from '../../FirebaseConfig';
 
 const AdicionarItens = () => {
   const [nomeItem, setNomeItem] = useState('');
   const [quantidadeItem, setQuantidadeItem] = useState('');
+  const [mensagem, setMensagem] = useState('');
 
   const handleAdicionarItem = async () => {
     if (nomeItem.trim() === '' || quantidadeItem.trim() === '') {
@@ -19,7 +20,10 @@ const AdicionarItens = () => {
       });
       setNomeItem('');
       setQuantidadeItem('');
-      Alert.alert('Sucesso', 'Item adicionado com sucesso!');
+      setMensagem('Item adicionado com sucesso!');
+      setTimeout(() => {
+        setMensagem('');
+      }, 3000); 
     } catch (error) {
       console.error('Erro ao adicionar item:', error);
       Alert.alert('Erro', 'Ocorreu um erro ao adicionar o item. Por favor, tente novamente mais tarde.');
@@ -42,6 +46,7 @@ const AdicionarItens = () => {
         onChangeText={setQuantidadeItem}
       />
       <Button title="Adicionar Item" onPress={handleAdicionarItem} />
+      {mensagem ? <Text style={styles.mensagem}>{mensagem}</Text> : null}
     </View>
   );
 };
@@ -61,6 +66,11 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginBottom: 20,
     paddingHorizontal: 10,
+  },
+  mensagem: {
+    marginTop: 10,
+    color: 'green',
+    fontSize: 16,
   },
 });
 
